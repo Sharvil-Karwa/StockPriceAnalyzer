@@ -16,3 +16,9 @@ C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\bin\Debug\net9.0\Newtonsoft.Json.d
 C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\StockPriceAnalyzer.csproj.AssemblyReference.cache
 C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\StockPriceAnalyzer.sourcelink.json
 C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\StockPri.6ED913D2.Up2Date
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\bin\Debug\net9.0\DotNetEnv.dll
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\bin\Debug\net9.0\Microsoft.Extensions.Configuration.dll
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\bin\Debug\net9.0\Sprache.dll
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\bin\Debug\net9.0\System.Net.Http.Json.dll
