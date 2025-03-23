@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using DotNetEnv;
 
@@ -29,11 +31,16 @@ class Program
 
         if (timeSeries != null && timeSeries.Count > 0)
         {
-            string latestTimestamp = timeSeries.Properties().First().Name;
-            JObject latestData = timeSeries[latestTimestamp] as JObject;
+            List<double> closingPrices = timeSeries.Properties()
+                .Take(10)
+                .Select(entry => double.Parse(entry.Value["4. close"].ToString()))
+                .ToList();
+
+            double sma = closingPrices.Average();
             
-            string latestPrice = latestData["1. open"].ToString();
-            Console.WriteLine($"Stock: {symbol}, Time: {latestTimestamp}, Price: ${latestPrice}");
+            Console.WriteLine($"Stock: {symbol}");
+            Console.WriteLine($"Last 10 Closing Prices: {string.Join(", ", closingPrices)}");
+            Console.WriteLine($"10-period Simple Moving Average (SMA): {sma:F2}");
         }
         else
         {
