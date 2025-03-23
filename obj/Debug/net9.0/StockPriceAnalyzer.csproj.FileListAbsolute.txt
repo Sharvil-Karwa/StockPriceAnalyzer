@@ -12,3 +12,7 @@ C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\refint\StockPrice
 C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\StockPriceAnalyzer.pdb
 C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\StockPriceAnalyzer.genruntimeconfig.cache
 C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\ref\StockPriceAnalyzer.dll
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\StockPriceAnalyzer.csproj.AssemblyReference.cache
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\StockPriceAnalyzer.sourcelink.json
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\StockPri.6ED913D2.Up2Date
