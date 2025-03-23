@@ -1,0 +1,14 @@
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\bin\Debug\net9.0\StockPriceAnalyzer.exe
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\bin\Debug\net9.0\StockPriceAnalyzer.deps.json
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\bin\Debug\net9.0\StockPriceAnalyzer.runtimeconfig.json
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\bin\Debug\net9.0\StockPriceAnalyzer.dll
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\bin\Debug\net9.0\StockPriceAnalyzer.pdb
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\StockPriceAnalyzer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\StockPriceAnalyzer.AssemblyInfoInputs.cache
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\StockPriceAnalyzer.AssemblyInfo.cs
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\StockPriceAnalyzer.csproj.CoreCompileInputs.cache
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\StockPriceAnalyzer.dll
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\refint\StockPriceAnalyzer.dll
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\StockPriceAnalyzer.pdb
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\StockPriceAnalyzer.genruntimeconfig.cache
+C:\Users\Rajesh\Desktop\c#\StockPriceAnalyzer\obj\Debug\net9.0\ref\StockPriceAnalyzer.dll
