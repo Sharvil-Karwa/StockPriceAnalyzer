@@ -4,12 +4,13 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Newtonsoft.Json.Linq;
 using DotNetEnv;
 
 class Program
 {
-    static async Task Main()
+    static async Task FetchStockData()
     {
         Env.Load();
         string apiKey = Environment.GetEnvironmentVariable("API_KEY");
@@ -21,53 +22,77 @@ class Program
         }
 
         string symbol = "AAPL";
-        string url = $"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=5min&apikey={apiKey}";
+        string csvFile = "stock_data.csv";
+        bool fileExists = File.Exists(csvFile);
 
-        using HttpClient client = new HttpClient();
-        HttpResponseMessage response = await client.GetAsync(url);
-        string json = await response.Content.ReadAsStringAsync();
-
-        JObject data = JObject.Parse(json);
-        var timeSeries = data["Time Series (5min)"] as JObject;
-
-        if (timeSeries != null && timeSeries.Count > 0)
+        if (!fileExists)
         {
-            List<(string, double)> stockData = timeSeries.Properties()
-                .Take(10)
-                .Select(entry => (entry.Name, double.Parse(entry.Value["4. close"].ToString())))
-                .ToList();
+            using StreamWriter writer = new StreamWriter(csvFile, true);
+            writer.WriteLine("Timestamp,Closing Price,SMA,Trend");
+        }
 
-            double sma = stockData.Select(x => x.Item2).Average();
-
-            int up = stockData.Zip(stockData.Skip(1), (a, b) => b.Item2 > a.Item2 ? 1 : 0).Sum();
-            int down = stockData.Zip(stockData.Skip(1), (a, b) => b.Item2 < a.Item2 ? 1 : 0).Sum();
-
-            string trend = up > down ? "Uptrend" : down > up ? "Downtrend" : "Sideways";
-
-            string csvFile = "stock_data.csv";
-            bool fileExists = File.Exists(csvFile);
-
-            using (StreamWriter writer = new StreamWriter(csvFile, true))
+        while (true)
+        {
+            try
             {
-                if (!fileExists)
+                string url = $"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=5min&apikey={apiKey}";
+
+                using HttpClient client = new HttpClient();
+                HttpResponseMessage response = await client.GetAsync(url);
+                string json = await response.Content.ReadAsStringAsync();
+
+                JObject data = JObject.Parse(json);
+                var timeSeries = data["Time Series (5min)"] as JObject;
+
+                if (timeSeries != null && timeSeries.Count > 0)
                 {
-                    writer.WriteLine("Timestamp,Closing Price,SMA,Trend");
+                    List<(string, double)> stockData = timeSeries.Properties()
+                        .Take(10)
+                        .Select(entry => (entry.Name, double.Parse(entry.Value["4. close"].ToString())))
+                        .ToList();
+
+                    double sma = stockData.Select(x => x.Item2).Average();
+
+                    int up = stockData.Zip(stockData.Skip(1), (a, b) => b.Item2 > a.Item2 ? 1 : 0).Sum();
+                    int down = stockData.Zip(stockData.Skip(1), (a, b) => b.Item2 < a.Item2 ? 1 : 0).Sum();
+
+                    string trend = up > down ? "Uptrend" : down > up ? "Downtrend" : "Sideways";
+
+                    using StreamWriter writer = new StreamWriter(csvFile, true);
+                    foreach (var (timestamp, price) in stockData)
+                    {
+                        writer.WriteLine($"{timestamp},{price},{sma:F2},{trend}");
+                    }
+
+                    Console.Clear();
+                    Console.WriteLine($"Stock: {symbol}");
+                    Console.WriteLine($"Last 10 Closing Prices: {string.Join(", ", stockData.Select(x => x.Item2))}");
+                    Console.WriteLine($"10-period SMA: {sma:F2}");
+                    Console.WriteLine($"Trend: {trend}");
+                    Console.WriteLine($"Data logged to {csvFile}");
+
+                    await Task.Delay(60000);
                 }
-                foreach (var (timestamp, price) in stockData)
+                else
                 {
-                    writer.WriteLine($"{timestamp},{price},{sma:F2},{trend}");
+                    Console.WriteLine("Error: Could not retrieve valid stock data.");
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
+    }
 
-            Console.WriteLine($"Stock: {symbol}");
-            Console.WriteLine($"Last 10 Closing Prices: {string.Join(", ", stockData.Select(x => x.Item2))}");
-            Console.WriteLine($"10-period SMA: {sma:F2}");
-            Console.WriteLine($"Trend: {trend}");
-            Console.WriteLine("Data logged to stock_data.csv");
-        }
-        else
+    static async Task Main()
+    {
+        Console.CancelKeyPress += (sender, e) =>
         {
-            Console.WriteLine("Error: Could not retrieve valid stock data.");
-        }
+            Console.WriteLine("\nProcess interrupted. Exiting gracefully...");
+            Environment.Exit(0);
+        };
+
+        await FetchStockData();
     }
 }

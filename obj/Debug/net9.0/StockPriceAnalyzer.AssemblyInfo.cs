@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StockPriceAnalyzer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e0ec181d7a261478e18e9195627b50635f03f0a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3c6f4950da791010ce7acd5e9459a79a7bbb9de")]
 [assembly: System.Reflection.AssemblyProductAttribute("StockPriceAnalyzer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StockPriceAnalyzer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
